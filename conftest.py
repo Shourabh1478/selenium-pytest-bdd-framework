@@ -80,6 +80,9 @@ def driver(request):
         options.add_argument("--disable-logging")
         options.add_argument("--log-level=3") # 3 = FATAL ONLY
 
+        if os.environ.get('GITHUB_ACTIONS'):
+            options.add_argument("--headless=new")
+
     # 2. Add arguments to bypass system-level monitoring that causes the PDH error
         options.add_argument("--disable-dev-shm-usage") # Overcomes limited resource problems
         options.add_argument("--no-sandbox")           # Bypass OS security model
