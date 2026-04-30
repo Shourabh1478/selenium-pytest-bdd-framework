@@ -29,7 +29,9 @@ jobs:
         with:
           name: test-reports
           path: reports/
+
       - name: Upload Screenshots
         uses: actions/upload-artifact@v4 # FIXED: Updated from v3 to v4
         with:
           name: test-screenshots
+          path: reports/screenshots/
