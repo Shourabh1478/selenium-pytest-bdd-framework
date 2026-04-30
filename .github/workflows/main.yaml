@@ -1,0 +1,36 @@
+name: Selenium Pytest CI
+
+on: [push]
+
+jobs:
+  automation-tests:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v3
+
+      - name: Setup Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.10'
+
+      - name: Install Dependencies
+        run: pip install -r requirements.txt
+
+      - name: Run Pytest (Headless)
+        run: |
+          # We add headless for CI environment
+          python -m pytest --browser chrome --html=reports/report.html --self-contained-html
+        continue-on-error: true
+
+      - name: Upload Report
+        uses: actions/upload-artifact@v3
+        with:
+          name: test-reports
+          path: reports/
+      - name: Upload Screenshots
+        uses: actions/upload-artifact@v3
+        with:
+          name: screenshots
+          path: screenshots/

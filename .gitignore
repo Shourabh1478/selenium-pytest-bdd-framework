@@ -1,0 +1,36 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.pyd
+*.pyo
+*.pdb
+*.pyc
+
+# Virtual environments
+.venv/
+venv/
+env/
+ENV/
+.Python
+
+# Pytest
+.pytest_cache/
+
+# Selenium / test artifacts
+logs/
+reports/screenshots/
+
+# IDEs and editors
+.vscode/
+.idea/
+*.sublime-project
+*.sublime-workspace
+
+# OS generated files
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Logs and temporary files
+*.log
