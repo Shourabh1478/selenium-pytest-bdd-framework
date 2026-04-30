@@ -8,10 +8,10 @@ jobs:
 
     steps:
       - name: Checkout Code
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4  # Updated to v4
 
       - name: Setup Python
-        uses: actions/setup-python@v4
+        uses: actions/setup-python@v5 # Updated to v5
         with:
           python-version: '3.10'
 
@@ -20,17 +20,16 @@ jobs:
 
       - name: Run Pytest (Headless)
         run: |
-          # We add headless for CI environment
+          # Headless mode is mandatory for GitHub Actions
           python -m pytest --browser chrome --html=reports/report.html --self-contained-html
         continue-on-error: true
 
       - name: Upload Report
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4 # FIXED: Updated from v3 to v4
         with:
           name: test-reports
           path: reports/
       - name: Upload Screenshots
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4 # FIXED: Updated from v3 to v4
         with:
-          name: screenshots
-          path: screenshots/
+          name: test-screenshots
